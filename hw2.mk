@@ -1,5 +1,5 @@
 Resultados_hw2.pdf : resultados.tex signals.pdf Fourier_trans.pdf Temblor.pdf Fourier_temblor.pdf plot.pdf
-    pdflatex resultados.tex
+    pdflatex Resultados_hw2.tex
 signals.pdf: Fourier.py
     python Fourier.py
 Fourier_trans.pdf: Fourier.py
