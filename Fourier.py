@@ -107,7 +107,7 @@ s2=fft(datos2)
 #Calculo de la frecuencia principal
 pos_maxima=np.argmax(s2)
 c=frecuencias[pos_maxima]
-print("La frecuencia principal de signal.dat es c")
+print("La frecuencia principal de temblor.txt es c")
 #grafica de la transformada de fourier de temblor.txt
 frecuencias2= fftfreq(len(lista_x))
 plt.figure(figsize=[8,8])

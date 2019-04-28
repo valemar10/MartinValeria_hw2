@@ -4,9 +4,13 @@ signals.pdf: Fourier.py
     python Fourier.py
 Fourier_trans.pdf: Fourier.py
     python Fourier.py
+espectograma.pdf: Fourier.py
+    python Fourier.py
 Temblor.pdf: Fourier.py
     python Fourier.py
 Fourier_temblor.pdf: Fourier.py
+    python Fourier.py
+espectograma_temblor.pdf: Fourier.py
     python Fourier.py
 plot.pdf : Plots_hw2.py datos.dat
     python plot_hw2.py
