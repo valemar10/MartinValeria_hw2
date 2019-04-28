@@ -58,10 +58,10 @@ plt.savefig('Fourier_trans.pdf')
 #Determinacion de las frecuencias principales
 pos_maxima=np.argmax(s)
 a=frecuencias[pos_maxima]
-print("La frecuencia principal de signal.dat es a")
+print("La frecuencia principal de signal.dat es", a)
 pos_maxima=np.argmax(s1)
 b=frecuencias[pos_maxima]
-print("La frecuencia principal de signal.dat es b")
+print("La frecuencia principal de signal.dat es", b)
 
 #6)Creacion del espectograma
 plt.figure(figsize=[15,15])
@@ -105,9 +105,9 @@ plt.savefig('Temblor.pdf')
 #Calculo de la transformada
 s2=fft(datos2)
 #Calculo de la frecuencia principal
-pos_maxima=np.argmax(s2)
-c=frecuencias[pos_maxima]
-print("La frecuencia principal de temblor.txt es c")
+#posicion_maxima=np.argmax(s2)
+#c=frecuencias[posicion_maxima]
+#print("La frecuencia principal de temblor.txt es", c)
 #grafica de la transformada de fourier de temblor.txt
 frecuencias2= fftfreq(len(lista_x))
 plt.figure(figsize=[8,8])
