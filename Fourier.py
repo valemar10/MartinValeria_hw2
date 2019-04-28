@@ -54,7 +54,15 @@ plt.plot(frecuencias1, s1, c='magenta')
 plt.xlabel("Frecuencias")
 plt.ylabel("f(t)")
 plt.title("Grafica de la transformada de fourier para signalSuma.dat")
-plt.savefig('Fourier_trans.pdf')
+plt.savefig('Fourier_trans.pdf') 
+#Determinacion de las frecuencias principales
+pos_maxima=np.argmax(s)
+a=frecuencias[pos_maxima]
+print("La frecuencia principal de signal.dat es a")
+pos_maxima=np.argmax(s1)
+b=frecuencias[pos_maxima]
+print("La frecuencia principal de signal.dat es b")
+
 #6)Creacion del espectograma
 plt.figure(figsize=[15,15])
 plt.subplot(2,2,1)
@@ -94,12 +102,30 @@ plt.xlabel('tiempo(s)')
 plt.ylabel('f(t)')
 plt.title('Grafica de los datos de temblor.txt')
 plt.savefig('Temblor.pdf')
+#Calculo de la transformada
+s2=fft(datos2)
+#Calculo de la frecuencia principal
+pos_maxima=np.argmax(s2)
+c=frecuencias[pos_maxima]
+print("La frecuencia principal de signal.dat es c")
 #grafica de la transformada de fourier de temblor.txt
 frecuencias2= fftfreq(len(lista_x))
-s2=fourier(len(datos2), datos2)
 plt.figure(figsize=[8,8])
-plt.plot(frecuencias2, s2, c='pink')
+plt.plot(frecuencias2, abs(s2), c='pink')
 plt.xlabel("frecuencias")
 plt.ylabel("f(t)")
 plt.title("Grafica de la transformada de fourier para temblor.txt")
 plt.savefig('Fourier_temblor.pdf')
+#Creacion del espectograma del temblor
+plt.figure(figsize=[15,15])
+plt.subplot(1,2,1)
+plt.specgram(frecuencias2, NFFT=len(s2), Fs= 0.1, noverlap=900)
+plt.ylabel("frecuencias")
+plt.xlabel("t(s)")
+plt.title("Espectograma en funcion de las frecuencias")
+plt.subplot(1,2,2)
+plt.specgram(s2, NFFT=len(s2), Fs= 0.1, noverlap=900)
+plt.ylabel("frecuencias")
+plt.xlabel("t(s)")
+plt.title("Espectograma en funcion de la transformada")
+plt.savefig("espectograma_temblor.pdf")
