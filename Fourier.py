@@ -56,7 +56,28 @@ plt.ylabel("f(t)")
 plt.title("Grafica de la transformada de fourier para signalSuma.dat")
 plt.savefig('Fourier_trans.pdf')
 #6)Creacion del espectograma
-
+plt.figure(figsize=[15,15])
+plt.subplot(2,2,1)
+plt.specgram(frecuencias1, NFFT=len(s1), Fs= 0.1, noverlap=900, label="signalSuma en funcion de las frecuencias")
+plt.ylabel("frecuencias")
+plt.xlabel("t(s)")
+plt.legend()
+plt.subplot(2,2,2)
+plt.specgram(s1, NFFT=len(s1), Fs= 0.1, noverlap=900, label="signalSuma en funcion de la transformada")
+plt.ylabel("frecuencias")
+plt.xlabel("t(s)")
+plt.legend()
+plt.subplot(2,2,3)
+plt.specgram(frecuencias, NFFT=len(s), Fs= 0.1, noverlap=900, label="signalSuma en funcion de las frecuencias1" )
+plt.ylabel("frecuencias")
+plt.xlabel("t(s)")
+plt.legend()
+plt.subplot(2,2,4)
+plt.specgram(s, NFFT=len(s), Fs= 0.1, noverlap=900, label="signalSuma en funcion de la transformada1")
+plt.ylabel("frecuencias")
+plt.xlabel("t(s)")
+plt.legend()
+plt.savefig("espectograma.pdf")
 #7 importacion de los datos de temblor.txt
 datos2=np.genfromtxt('temblor.txt', skip_header=4)
 
@@ -67,7 +88,7 @@ for i in range(len(datos2)):
     periodo+= 0.10
     lista_x.append(periodo)
 #grafica de los datos de temblor.txt
-plt.figure(figszize=[7,7])
+plt.figure(figsize=[7,7])
 plt.plot(lista_x,datos2, c='orange')
 plt.xlabel('tiempo(s)')
 plt.ylabel('f(t)')
