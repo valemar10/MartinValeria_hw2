@@ -14,7 +14,7 @@ espectograma_temblor.pdf: Fourier.py
     python Fourier.py
 plot.pdf : Plots_hw2.py datos.dat
     python plot_hw2.py
-datos.dat : a.out
-    ./a.out >> datos. dat
+%.dat : a.out
+    ./a.out
 a.out : makedatos.cpp
     g++ makedatos.cpp
