@@ -23,60 +23,66 @@
 \maketitle
 
 \section{Ejercicio 2: Transformadas de Fourier}
-Consigna:
-Para las señales signal.dat y signalSuma.dat describir las diferencias en las señales, las frecuencias de
-los picos principales de las transformadas de fourier y las diferencias entre los espectrogramas.
-Para la señal temblor.txt debe describir la señal original, la transformada de Fourier y explicar
-explícitamente qué puede ver el el espectrograma.
-Estas expliaciones deben ser cortas y precisas.
-
-Picos: 0.0703125 y -0.0703125
 \subsection{Signal.dat y signalSuma.dat:}
+\subsubsection{Grafica general}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.1\textwidth]{signals.pdf}
     \caption{Grafica de las seniales.}
     \label{fig:my_label}
 \end{figure}
+\subsubsection{Grafica de la transforma de fourier para las seniales}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.1\textwidth]{Fourier_trans.pdf}
     \caption{Grafica de las transformadas de fourier para las dos primeras seniales.}
     \label{fig:my_label}
 \end{figure}
-
 \subsubsection{Espectograma}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{espectograma.pdf}
+    \caption{Espectogramas de las dos primeras seniales.}
+    \label{fig:my_label}
+\end{figure}
 \subsection{Temblor.txt:}
+\subsubsection{Grafica general}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.1\textwidth]{Temblor.pdf}
     \caption{Grafica de los datos de temblor.txt}
     \label{fig:my_label}
 \end{figure}
+\subsubsection{Grafica transformada de fourier}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.1\textwidth]{Fourier_temblor.pdf}
     \caption{Grafica de las transformada de fourier de los datos de temblor.txt}
     \label{fig:my_label}
+
 \end{figure}
-\subsubsection{Espectogramas}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.1\textwidth]{espectograma.pdf}
-    \caption{Espectograma de los datos de las seniales}
-    \label{fig:my_label}
-\end{figure}
+\subsubsection{Espectograma}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.1\textwidth]{espectograma_temblor.pdf}
-    \caption{Espectograma de los datos de temblor.txt}
+    \caption{Espectograma del temblor}
     \label{fig:my_label}
 \end{figure}
-\section{Ejercicio ecuaciones diferenciales}
+\section{Ejercicio 2: Ecuaciones diferenciales ordinarias}
+\subsection{Primera grafica para $\omega$ = 1*$\sqrt{\frac{k}{m}}$}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.1\textwidth]{plot.pdf}
-    \caption{primera grafica de ecuaciones diferenciales}
+    \includegraphics[width=1.1\textwidth]{plot_omegafijo.pdf}
+    \caption{Desplazamiento del edificio en el tiempo}
     \label{fig:my_label}
 \end{figure}
+\subsection{Grafica de las mayores amplitudes para cada uno de los 100 omegas generados}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{plot_omegas.pdf}
+    \caption{Mayores amplitudes para cada omega}
+    \label{fig:my_label}
+\end{figure}
+\subsection{Grafica de los cuatro omegas}
+
 \end{document}
