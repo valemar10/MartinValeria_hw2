@@ -101,33 +101,33 @@ void leapfrog(float inicial, float finali, float dt)
                 U1nuevo= U1viejo+V1nuevo*dt;
                 if(abs(U1nuevo)>U1viejo)
                 {
-                    posicion1[contador2]=U1nuevo;
+                    posicion1[contador2]=abs(U1nuevo);
                 }
                 else
                 {
-                    posicion1[contador2]=U2viejo;
+                    posicion1[contador2]=abs(U3viejo);
                 }
                 V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
                 V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
                 U2nuevo=U2viejo+V2nuevo*dt;
                 if(abs(U2nuevo)>U2viejo)
                 {
-                    posicion2[contador2]=U2nuevo;
+                    posicion2[contador2]=abs(U2nuevo);
                 }
                 else
                 {
-                    posicion2[contador2]=U2viejo;
+                    posicion2[contador2]=abs(U3viejo);
                 }
                 V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
                 V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
                 U3nuevo=U3viejo+V3nuevo*dt;
                 if(abs(U3nuevo)>U3viejo)
                 {
-                    posicion3[contador2]=U3nuevo;
+                    posicion3[contador2]=abs(U3nuevo);
                 }
                 else
                 {
-                    posicion3[contador2]=U3viejo;
+                    posicion3[contador2]=abs(U3viejo);
                 }
 
                 j=j+1;
