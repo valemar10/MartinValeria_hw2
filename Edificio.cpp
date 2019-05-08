@@ -3,14 +3,14 @@
 #include <cmath>
 #include <math.h>
 using namespace std;
-void leapfrog(float inicial, float finali, float dt, string archivo);
+void leapfrog(float inicial, float finali, float dt);
 int main()
 {
-    leapfrog(0.0, 20.0, 0.1, "datoslp.dat");
+    leapfrog(0.0, 20.0, 0.1);
     return(0); 
 }
 
-void leapfrog(float inicial, float finali, float dt, string archivo)
+void leapfrog(float inicial, float finali, float dt)
 {
     float V1nuevo=0;
     float U1nuevo=0;
@@ -29,7 +29,7 @@ void leapfrog(float inicial, float finali, float dt, string archivo)
     float V3viejo;
     float U3viejo;
     ofstream outfile;
-    outfile.open(archivo);
+    outfile.open("datoslp.dat");
     while (inicial<finali)
     {
         V1viejo=V1nuevo;
@@ -73,8 +73,60 @@ void leapfrog(float inicial, float finali, float dt, string archivo)
     for(int i=0;i<100;i++)
     {
         omegas[i]=arreglo[i]*sqrt(k/m);
-        cout<<omegas[i]<<endl;
     }
-  
+    float posicion1[100];
+    float posicion2[100];
+    float posicion3[100];
+    int j=0;
+    int contador2=0;
+    while(j<9900)  
+        {
+            if(j%100==0)
+            {
+                contador2=contador2+1;
+            }
+
+
+                V1viejo=V1nuevo;
+                U1viejo=U1nuevo;
+                V2viejo=V2nuevo;
+                U2viejo=U2nuevo;
+                V3viejo=V3nuevo;
+                U3viejo=U3nuevo;
+                V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omegas[contador2]*inicial));
+                V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omegas[contador2]*inicial));
+                U1nuevo= U1viejo+V1nuevo*dt;
+                if(U1nuevo>U1viejo)
+                {
+                    posicion1[contador2]=U1nuevo;
+                }
+                V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+                V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+                U2nuevo=U2viejo+V2nuevo*dt;
+                if(U2nuevo>U2viejo)
+                {
+                    posicion2[contador2]=U2nuevo;
+                }
+                V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+                V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+                U3nuevo=U3viejo+V3nuevo*dt;
+                if(U3nuevo>U3viejo)
+                {
+                    posicion3[contador2]=U3nuevo;
+                }
+
+                j=j+1;
+            }
+            
+           
+        
+        
+    outfile.open("datos_omega.dat");
+    for(int i=0; i<100; i++)
+    {
+          outfile <<posicion1[i] <<" "<< posicion2[i] <<" "<< posicion3[i] <<" "<< omegas[i] <<endl;   
+    }
+    outfile.close();
+
 }
 
