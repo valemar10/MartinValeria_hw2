@@ -52,5 +52,29 @@ void leapfrog(float inicial, float finali, float dt, string archivo)
           
     }
     outfile.close();
+    // arreglo de omegas
+    float contador=0;
+    float omegas[100];
+    float arreglo[100];
+    float valor_inicial=0.2;
+    arreglo[0]=0.2;
+    float valor=0; 
+    float espacio=((3-0.2)/(99));
+    for(int i=1; i<100; i++)
+    {
+        valor=valor_inicial+(espacio);
+        arreglo[i]=valor;
+        valor_inicial=valor;
+        
+        
+        
+    }
     
+    for(int i=0;i<100;i++)
+    {
+        omegas[i]=arreglo[i]*sqrt(k/m);
+        cout<<omegas[i]<<endl;
+    }
+  
 }
+
