@@ -5,11 +5,18 @@
 using namespace std;
 void leapfrog(float inicial, float finali, float dt);
 
-void otro(float inicial, float finali, float dt);
+void otro(float inicial, float finali, float dt, float omega, string archivo);
 int main()
 {
+    float omega2=0.402837;
+    float omega1=4.04266;
+    float omega3= 3.92266;
+    float omega4=2.32274;
     leapfrog(0.0, 20.0, 0.1);
-    otro(0.0, 20.0, 0.1);
+    otro(0.0, 20.0, 0.1, omega1, "datoslp1.dat");
+    otro(0.0, 20.0, 0.1, omega2, "datoslp2.dat");
+    otro(0.0, 20.0, 0.1, omega3, "datoslp3.dat");
+    otro(0.0, 20.0, 0.1, omega4, "datoslp4.dat");
     return(0); 
 }
 
@@ -145,7 +152,7 @@ void leapfrog(float inicial, float finali, float dt)
 
 }
 
-void otro(float inicial, float finali, float dt)
+void otro(float inicial, float finali, float dt, float omega, string archivo)
 {
     float V1nuevo=0;
     float U1nuevo=0;
@@ -156,7 +163,6 @@ void otro(float inicial, float finali, float dt)
     float m=1000;
     float gamma=0;
     float k=2000;
-    float omega= 3.7;
     float V1viejo;
     float U1viejo;
     float V2viejo;
@@ -164,7 +170,7 @@ void otro(float inicial, float finali, float dt)
     float V3viejo;
     float U3viejo;
     ofstream outfile;
-    outfile.open("datos37.dat");
+    outfile.open(archivo);
     while (inicial<finali)
     {
         V1viejo=V1nuevo;
