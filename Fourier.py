@@ -37,10 +37,12 @@ def fourier(numero,datos):
             c=(abs(zsum)/numero)
         listica=np.append(listica, c)
     return listica
-frecuencias= fftfreq(len(t))
+dt=t[0]-t[1]
+frecuencias= fftfreq(len(t), dt)
 s=fourier(len(f), f)
 #4) Transformada de fourier de signalSuma.dat
-frecuencias1= fftfreq(len(t1))
+dt1=t1[0]-t1[1]
+frecuencias1= fftfreq(len(t1), dt1)
 s1=fourier(len(f1), f1)
 #5) Grafica en funcion de las frecuencias para ambas seniales
 
@@ -55,8 +57,8 @@ pos_maxima=np.argmax(s)
 a=frecuencias[pos_maxima]
 print("La frecuencia principal de signal.dat es", a)
 pos_maxima=np.argmax(s1)
-b=frecuencias[pos_maxima]
-print("La frecuencia principal de signal.dat es", b)
+b=frecuencias1[pos_maxima]
+print("La frecuencia principal de signalSuma.dat es", b)
 
 #6)Creacion del espectograma
 
