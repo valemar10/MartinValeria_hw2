@@ -98,7 +98,7 @@ s2=fft(datos2)
 #c=frecuencias[posicion_maxima]
 #print("La frecuencia principal de temblor.txt es", c)
 #grafica de la transformada de fourier de temblor.txt
-frecuencias2= fftfreq(len(lista_x))
+frecuencias2= fftfreq(len(lista_x),0.1)
 plt.figure(figsize=[8,8])
 plt.plot(frecuencias2, abs(s2), c='pink')
 plt.xlabel("frecuencias")
