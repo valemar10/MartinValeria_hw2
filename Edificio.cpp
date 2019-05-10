@@ -16,7 +16,7 @@ void otro4(float inicial, float finali, float dt, float omega);
 int main()
 {
     float omega2=0.402837;
-    float omega1=4.04266;
+    float omega1=3.72267;
     float omega3= 3.92266;
     float omega4=2.32274;
     leapfrog(0.0, 20.0, 0.1);
@@ -36,7 +36,7 @@ void leapfrog(float inicial, float finali, float dt)
     float V3nuevo=0;
     float U3nuevo=0;
     float m=1000;
-    float gamma=0;
+    float gammas=0;
     float k=2000;
     float omega= 1*sqrt(k/m);
     float V1viejo;
@@ -56,14 +56,14 @@ void leapfrog(float inicial, float finali, float dt)
         V3viejo=V3nuevo;
         U3viejo=U3nuevo;
         outfile << U1nuevo <<" "<< U2nuevo <<" "<< U3nuevo <<" "<< inicial <<endl;
-        V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
-        V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1viejo= V1viejo-(dt/2)*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1nuevo= V1viejo+dt*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
         U1nuevo= U1viejo+V1nuevo*dt;
-        V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
-        V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2viejo= V2viejo-(dt/2)*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2nuevo=V2viejo+dt*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
         U2nuevo=U2viejo+V2nuevo*dt;
-        V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
-        V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3viejo= V3viejo-(dt/2)*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3nuevo= V3viejo+dt*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
         U3nuevo=U3viejo+V3nuevo*dt;
         inicial= inicial+dt;
           
@@ -110,8 +110,8 @@ void leapfrog(float inicial, float finali, float dt)
                 U2viejo=U2nuevo;
                 V3viejo=V3nuevo;
                 U3viejo=U3nuevo;
-                V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omegas[contador2]*inicial));
-                V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omegas[contador2]*inicial));
+                V1viejo= V1viejo-(dt/2)*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omegas[contador2]*inicial));
+                V1nuevo= V1viejo+dt*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omegas[contador2]*inicial));
                 U1nuevo= U1viejo+V1nuevo*dt;
                 if(abs(U1nuevo)>U1viejo)
                 {
@@ -121,8 +121,8 @@ void leapfrog(float inicial, float finali, float dt)
                 {
                     posicion1[contador2]=abs(U1viejo);
                 }
-                V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
-                V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+                V2viejo= V2viejo-(dt/2)*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+                V2nuevo=V2viejo+dt*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
                 U2nuevo=U2viejo+V2nuevo*dt;
                 if(abs(U2nuevo)>U2viejo)
                 {
@@ -132,8 +132,8 @@ void leapfrog(float inicial, float finali, float dt)
                 {
                     posicion2[contador2]=abs(U2viejo);
                 }
-                V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
-                V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+                V3viejo= V3viejo-(dt/2)*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
+                V3nuevo= V3viejo+dt*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
                 U3nuevo=U3viejo+V3nuevo*dt;
                 if(abs(U3nuevo)>U3viejo)
                 {
@@ -168,7 +168,7 @@ void otro1(float inicial, float finali, float dt, float omega)
     float V3nuevo=0;
     float U3nuevo=0;
     float m=1000;
-    float gamma=0;
+    float gammas=0;
     float k=2000;
     float V1viejo;
     float U1viejo;
@@ -187,14 +187,14 @@ void otro1(float inicial, float finali, float dt, float omega)
         V3viejo=V3nuevo;
         U3viejo=U3nuevo;
         outfile << U1nuevo <<" "<< U2nuevo <<" "<< U3nuevo <<" "<< inicial <<endl;
-        V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
-        V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1viejo= V1viejo-(dt/2)*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1nuevo= V1viejo+dt*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
         U1nuevo= U1viejo+V1nuevo*dt;
-        V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
-        V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2viejo= V2viejo-(dt/2)*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2nuevo=V2viejo+dt*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
         U2nuevo=U2viejo+V2nuevo*dt;
-        V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
-        V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3viejo= V3viejo-(dt/2)*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3nuevo= V3viejo+dt*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
         U3nuevo=U3viejo+V3nuevo*dt;
         inicial= inicial+dt;
           
@@ -211,7 +211,7 @@ void otro2(float inicial, float finali, float dt, float omega)
     float V3nuevo=0;
     float U3nuevo=0;
     float m=1000;
-    float gamma=0;
+    float gammas=0;
     float k=2000;
     float V1viejo;
     float U1viejo;
@@ -230,14 +230,14 @@ void otro2(float inicial, float finali, float dt, float omega)
         V3viejo=V3nuevo;
         U3viejo=U3nuevo;
         outfile << U1nuevo <<" "<< U2nuevo <<" "<< U3nuevo <<" "<< inicial <<endl;
-        V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
-        V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1viejo= V1viejo-(dt/2)*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1nuevo= V1viejo+dt*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
         U1nuevo= U1viejo+V1nuevo*dt;
-        V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
-        V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2viejo= V2viejo-(dt/2)*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2nuevo=V2viejo+dt*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
         U2nuevo=U2viejo+V2nuevo*dt;
-        V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
-        V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3viejo= V3viejo-(dt/2)*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3nuevo= V3viejo+dt*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
         U3nuevo=U3viejo+V3nuevo*dt;
         inicial= inicial+dt;
           
@@ -254,7 +254,7 @@ void otro3(float inicial, float finali, float dt, float omega)
     float V3nuevo=0;
     float U3nuevo=0;
     float m=1000;
-    float gamma=0;
+    float gammas=0;
     float k=2000;
     float V1viejo;
     float U1viejo;
@@ -273,14 +273,14 @@ void otro3(float inicial, float finali, float dt, float omega)
         V3viejo=V3nuevo;
         U3viejo=U3nuevo;
         outfile << U1nuevo <<" "<< U2nuevo <<" "<< U3nuevo <<" "<< inicial <<endl;
-        V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
-        V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1viejo= V1viejo-(dt/2)*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1nuevo= V1viejo+dt*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
         U1nuevo= U1viejo+V1nuevo*dt;
-        V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
-        V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2viejo= V2viejo-(dt/2)*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2nuevo=V2viejo+dt*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
         U2nuevo=U2viejo+V2nuevo*dt;
-        V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
-        V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3viejo= V3viejo-(dt/2)*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3nuevo= V3viejo+dt*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
         U3nuevo=U3viejo+V3nuevo*dt;
         inicial= inicial+dt;
           
@@ -297,7 +297,7 @@ void otro4(float inicial, float finali, float dt, float omega)
     float V3nuevo=0;
     float U3nuevo=0;
     float m=1000;
-    float gamma=0;
+    float gammas=0;
     float k=2000;
     float V1viejo;
     float U1viejo;
@@ -316,14 +316,14 @@ void otro4(float inicial, float finali, float dt, float omega)
         V3viejo=V3nuevo;
         U3viejo=U3nuevo;
         outfile << U1nuevo <<" "<< U2nuevo <<" "<< U3nuevo <<" "<< inicial <<endl;
-        V1viejo= V1viejo-(dt/2)*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
-        V1nuevo= V1viejo+dt*(1/m)*((-gamma*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1viejo= V1viejo-(dt/2)*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
+        V1nuevo= V1viejo+dt*(1/m)*((-gammas*V1viejo)-(2*k*U1viejo)+(k*U2viejo)+sin(omega*inicial));
         U1nuevo= U1viejo+V1nuevo*dt;
-        V2viejo= V2viejo-(dt/2)*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
-        V2nuevo=V2viejo+dt*(1/m)*((-gamma*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2viejo= V2viejo-(dt/2)*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
+        V2nuevo=V2viejo+dt*(1/m)*((-gammas*V2viejo)+(k*U1viejo)-(2*k*U2viejo)+(k*U3viejo));
         U2nuevo=U2viejo+V2nuevo*dt;
-        V3viejo= V3viejo-(dt/2)*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
-        V3nuevo= V3viejo+dt*(1/m)*((-gamma*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3viejo= V3viejo-(dt/2)*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
+        V3nuevo= V3viejo+dt*(1/m)*((-gammas*V3viejo)+(k*U2viejo)-(k*U3viejo));
         U3nuevo=U3viejo+V3nuevo*dt;
         inicial= inicial+dt;
           
