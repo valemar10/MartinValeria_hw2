@@ -30,11 +30,11 @@ x= fft(f)
 def fourier(numero,datos):
     listica=np.empty(0)
     for i in range(numero):
-        zsum=0
+        suma=0
         for j in range(numero):
             z=complex(0,2*np.pi*j*i/numero)
-            zsum+=datos[j]*np.exp(-z)
-            c=(abs(zsum)/numero)
+            suma+=datos[j]*np.exp(-z)
+            c=(abs(suma)/numero)
         listica=np.append(listica, c)
     return listica
 dt=t[0]-t[1]
